@@ -1,0 +1,24 @@
+TinyOS interrupt-oriented programming bugdoor
+==============================================
+Samuel J. Tan <samueltan@gmail.com>
+
+Description
+------------
+This patch applies the bugdoor described in my paper to TinyOS, rendering
+binaries compiled for the TelosB mote vulnerable to the stack-growing exploit
+that could allow privileged access to the MSP430 Bootstrap Loader.
+
+This patch works with TinyOS 2.0 source code as of 2007-07-30 07:18:52.
+
+Instructions for applying patch
+--------------------------------
+1) Copy HplMsp430Usart1P.patch into [TINYOS_FOLDER]/tos/chips/msp430/usart/
+2) cd into [TINYOS_FOLDER]/tos/chips/msp430/usart/
+3) Type "patch < HplMsp430Usart1P.patch" to apply the patch to 
+   HplMsp430Usart1P.nc
+4) cd into the appropriate [TINYOS_FOLDER]/apps/[APP_NAME] for the target
+5) Type "make telosb" to compile the TinyOS app for the TelosB mote target
+
+After executing these steps, [TINYOS_FOLDER]/apps/[APP_NAME]/build/telosb
+should contain a .exe executable and .ihex file containing the IOP bugdoor
+that can be flashed to into a TelosB mote.

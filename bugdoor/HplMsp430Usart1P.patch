@@ -1,0 +1,11 @@
+--- HplMsp430Usart1P.nc	2014-03-04 11:38:24.758749083 -0500
++++ HplMsp430Usart1P_bugdoor.nc	2014-03-04 11:36:38.014625049 -0500
+@@ -95,6 +95,8 @@
+ 
+   TOSH_SIGNAL(UART1RX_VECTOR) {
+     uint8_t temp = U1RXBUF;
++    WRITE_SR( READ_SR | SR_GIE);
++    ME2 |= URXE1;
+     signal Interrupts.rxDone(temp);
+   }
+ 
