@@ -1,0 +1,30 @@
+mspdebug IOP static analysis tools patch 
+=============================================
+Samuel J. Tan <samueltan@gmail.com>
+
+Description
+------------
+This patch adds the brute force search ("search") and interrupt state change
+analyzer ("intsc") functions described in my paper to mspdebug. These static
+analyzer tools are designed specifically to work with mspdebug's sim driver.
+
+This patch works with mspdebug-0.22 obtained from 
+http://sourceforge.net/projects/mspdebug/files/
+
+Instructions for applying patch
+--------------------------------
+1) Download a mspdebug-0.22 tarball from 
+   http://sourceforge.net/projects/mspdebug/files/
+2) cd to the folder with the tarball and unpack with
+   "tar xvfz mspdebug-0.22.tar.gz"
+3) The current directory should now contain a folder mspdebug-0.22/
+   Copy mspdebug-0.22-iop.patch into the current directory (NOT into the 
+   mspdebug-0.22/ folder itself)
+4) Apply the patch by typing "patch -s -p0 < mspdebug-0.22-iop.patch"
+5) The mspdebug-0.22/ folder is now patched
+6) cd into mspdebug-0.22/ and run "make install" as root to compile and install
+   the patched mspdebug-0.22 with iop static analysis tools
+
+Instructions for use of the mspdebug sim functions "search" and "intsc" can
+be found by typing "help search" or "help intsc" while running mspdebug in
+simulator (sim) mode.
