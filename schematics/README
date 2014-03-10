@@ -1,0 +1,26 @@
+GoodFET42-JTAG Schematics
+====================================
+Samuel J. Tan <samueltan@gmail.com>
+
+Description
+------------
+This are the schematics (.brd and .sch files) for the GoodFET42-JTAG,
+a modified GoodFET42 which exposes its JTAG slave and RST/NMI pins.
+This board was used for my experiments in my detailed in my interrupt-oriented 
+programming paper. These files may be opened with Eagle CAD or a similar tool.
+
+Instructions for preparing board for production
+------------------------------------------------
+1) Open Eagle CAD
+2) Open goodspeed-gerb274x.cam in Eagle's CAM Processor
+3) Run the .cam file to produce a set of Gerber files
+    > You can view these files in gerbv to see the actual orders that the 
+      machines will be processing to make the boards
+4) Send the appropriate gerber files to the PCB manufacturer to get the boards 
+   made
+
+Bugs
+-----
+- The MSP430F2618 on the GoodFET42-JTAG currently cannot be properly powered
+  over JTAG (USB connection required to power it during JTAG session). The 
+  connections from the VCC pin to the MSP430F2618 need to be fixed.
